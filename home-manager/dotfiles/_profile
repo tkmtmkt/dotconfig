@@ -1,0 +1,88 @@
+# .profile
+
+# User specific environment and startup programs
+
+# 環境変数設定
+export EDITOR=vim
+export XDG_CONFIG_HOME="${HOME}/.config"
+
+pathmunge () {
+  case ":${PATH}:" in
+    *:"$1":*)
+      ;;
+    *)
+      if [ "$2" = "after" ] ; then
+        PATH=$PATH:$1
+      else
+        PATH=$1:$PATH
+      fi
+  esac
+}
+
+add_toolpath () {
+  dir=`find "$HOME/opt" -maxdepth 1 -type d -name $1 2> /dev/null | sort -r | head -n 1`
+  if [[ ! -d "$dir" ]]; then
+    dir=`find "/opt" -maxdepth 1 -type d -name $1 2> /dev/null | sort -r | head -n 1`
+  fi
+  if [[ -d "$dir" ]]; then
+    if [[ "$2" = "bin" ]]; then
+      pathmunge $dir/bin
+    else
+      pathmunge $dir
+    fi
+  fi
+}
+
+# setting for tools
+add_toolpath spark-* bin
+add_toolpath phantomjs-* bin
+add_toolpath gatling-* bin
+add_toolpath apache-maven-* bin
+add_toolpath sbt-* bin
+add_toolpath gradle-* bin
+add_toolpath scala-* bin
+add_toolpath btrace-* bin
+
+# settings for ToolBox
+TOOLBOX_DIR="$HOME/opt/toolbox"
+if [[ ! -d "$TOOLBOX_DIR" ]]; then
+  TOOLBOX_DIR="/opt/toolbox"
+fi
+if [[ -d "$TOOLBOX_DIR" ]]; then
+  export TOOLBOX_DIR
+  # PATH
+  pathmunge $TOOLBOX_DIR/bin
+  # MANPATH
+  if [[ -z $MANPATH ]]; then
+    export MANPATH="$TOOLBOX_DIR/man:$TOOLBOX_DIR/share/man"
+  else
+    export MANPATH="$TOOLBOX_DIR/man:$TOOLBOX_DIR/share/man:$MANPATH"
+  fi
+fi
+
+# setting for JAVA
+JAVA_HOME="$HOME/opt/java/8"
+if [[ ! -d "$JAVA_HOME" ]]; then
+  JAVA_HOME="/opt/java/8"
+fi
+if [[ -d "$JAVA_HOME" ]]; then
+  export JAVA_HOME
+  export CLASS_PATH="$JAVA_HOME/lib/tools.jar"
+  pathmunge $JAVA_HOME/bin
+fi
+
+# Add RVM to PATH for scripting
+if [[ -d "$HOME/.rvm/bin" ]]; then
+  pathmunge $HOME/.rvm/bin
+fi
+
+# settings for user bin
+if [[ -d "$HOME/bin" ]]; then
+  pathmunge $HOME/bin
+fi
+
+export PATH
+unset -f pathmunge
+unset -f add_toolpath
+
+# vim: set ft=sh ts=2 sw=2 et:

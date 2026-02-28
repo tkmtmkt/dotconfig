@@ -17,23 +17,27 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
-    pkgs.p7zip          # ファイルアーカイバ
-    pkgs.procs          # psの代替コマンド
-    pkgs.htop           # topの代替コマンド
-    pkgs.bat            # catの代替コマンド
-    pkgs.ripgrep        # grepの代替コマンド
-    pkgs.fd             # findの代替コマンド
-    pkgs.hexyl          # odの代替コマンド
-    pkgs.fio            # ディスク性能テストツール
-    pkgs.pwgen          # ランダムなパスワードを生成するコマンド
-    pkgs.tmux           # ターミナルエミュレータ
-    pkgs.vifm           # ファイルマネージャ
-    pkgs.lnav           # ログビューア
-    pkgs.uv             # Python管理ツール
+    bat                 # catの代替コマンド
+    fd                  # findの代替コマンド
+    fio                 # ディスク性能テストツール
+    git                 # バージョン管理ツール
+    hexyl               # odの代替コマンド
+    htop                # topの代替コマンド
+    lnav                # ログビューア
+    p7zip               # ファイルアーカイバ
+    procs               # psの代替コマンド
+    pwgen               # ランダムなパスワードを生成するコマンド
+    ripgrep             # grepの代替コマンド
+    tig                 # gitブラウザ
+    tmux                # ターミナルエミュレータ
+    tree                # ディレクトリ構造表示ツール
+    uv                  # Pythonパッケージ管理ツール
+    vifm                # ファイルマネージャ
+    vim                 # テキストエディタ
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -56,6 +60,22 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    ".bash_aliases".force = true;
+    ".bash_aliases".source = dotfiles/_bash_aliases;
+    ".bash_profile".force = true;
+    ".bash_profile".source = dotfiles/_bash_profile;
+    ".bashrc".force = true;
+    ".bashrc".source = dotfiles/_bashrc;
+    ".gitconfig".force = true;
+    ".gitconfig".source = dotfiles/_gitconfig;
+    ".gitexclude".force = true;
+    ".gitexclude".source = dotfiles/_gitexclude;
+    ".profile".force = true;
+    ".profile".source = dotfiles/_profile;
+    ".tigrc".force = true;
+    ".tigrc".source = dotfiles/_tigrc;
+    ".tmux.conf".force = true;
+    ".tmux.conf".source = dotfiles/_tmux.conf;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

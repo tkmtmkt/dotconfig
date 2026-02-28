@@ -1,0 +1,37 @@
+# .bash_aliases
+
+# color
+if [ -x /usr/bin/dircolors ]; then
+  alias ls='ls --color=auto -F'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
+
+# ls
+alias l='ls -CF'
+alias ll='ls -lF'
+alias lh='ls -lh'
+alias la='ls -A'
+alias lz='ls -Z'
+alias ltr='ls -ltr'
+
+alias ..="cd .."
+alias less="less -R "
+alias path='echo $PATH | sed "s/:/\n/g"'
+alias tree='tree -F --dirsfirst --charset=ascii'
+
+# tmux
+alias tmls='tmux list-session '
+alias tmas='tmux attach-session -t '
+alias tmks='tmux kill-session -t '
+alias tmrs='tmux rename-session -t '
+alias tmns='tmux new -s '
+alias tmlw='tmux list-windows -t'
+alias tmnw='tmux new-window -n '
+alias tmkw='tmux kill-window -t'
+alias tmlp='tmux list-panes -t '
+alias tmrl='tmux source-file ~/.tmux.conf'
+alias tmd='tmux detach '
+
+# vim: set ft=sh ts=2 sw=2 et:

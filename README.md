@@ -38,6 +38,12 @@ $ nix store gc
 ### home-manager管理
 
 ```sh
+# 設定編集
+$ home-manager edit
+
+# 有効化
+$ home-manager switch
+
 # パッケージ一覧
 $ home-manager packages
 ```

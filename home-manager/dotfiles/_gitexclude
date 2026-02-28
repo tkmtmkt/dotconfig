@@ -1,0 +1,11 @@
+*.sw[po]
+\#*#
+*#
+.#*
+.*~
+*~
+*.[ao]
+_FOSSIL_
+.svn
+.hg
+.sgdrawer

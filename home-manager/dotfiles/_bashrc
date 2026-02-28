@@ -1,0 +1,99 @@
+# .bashrc
+
+# Source global definitions
+if [[ -f /etc/bashrc ]]; then
+  . /etc/bashrc
+fi
+
+# Source original definitions
+if [[ -f /etc/skel/.bashrc ]] ; then
+  . /etc/skel/.bashrc
+fi
+
+# User specific aliases and functions
+
+# エリアス設定
+if [[ -f ~/.bash_aliases ]] ; then
+  . ~/.bash_aliases
+fi
+
+# プロンプト設定
+if [[ -d "$TOOLBOX_DIR" ]]; then
+  if [[ -s "$TOOLBOX_DIR/completion" ]]; then
+    for COMPLETION_FILE in $(ls $TOOLBOX_DIR/completion/*.bash)
+    do
+      . $COMPLETION_FILE
+    done
+  fi
+  [[ -s "$TOOLBOX_DIR/share/git-core/contrib/completion/git-completion.bash" ]] && \
+      . "$TOOLBOX_DIR/share/git-core/contrib/completion/git-completion.bash"
+  [[ -s "$TOOLBOX_DIR/share/git-core/contrib/completion/git-prompt.sh" ]] && \
+      . "$TOOLBOX_DIR/share/git-core/contrib/completion/git-prompt.sh"
+  PG_="\[\e[4;31m\]\$(__git_ps1)"
+  GIT_PS1_SHOWDIRTYSTATE=true
+fi
+
+case "$TERM" in
+linux)
+  export LC_MESSAGES=C
+  PB_="\[\e[0;35m\]=> \$?\n"
+  P1_="\[\e[32m\]\$(date +'%F %T %z') "
+  P2_="\[\e[33m\]\u@\h "
+  P3_="\[\e[36m\]\w"
+  PE_="\[\e[0m\]\n\\\$ "
+  export PS1=$PB_$P1_$P2_$P3_$PE_
+  ;;
+*)
+  export LANG=ja_JP.UTF-8
+  export TERM='screen-256color'
+  export DISPLAY=localhost:0.0
+  PB_="\[\e[0;35m\]=> \$?\n"
+  P1_="\[\e[4;32m\]\$(date +'%F %T %z') "
+  P2_="\[\e[33m\]\u@\h "
+  P3_="\[\e[36m\]\w"
+  PE_="\[\e[0m\]\n\\\$ "
+  export PS1=$PB_$P1_$P2_$P3_$PG_$PE_
+  ;;
+esac
+
+# tmux
+export TMUX_LOG_BASE="${HOME}/.local/var/log/tmux"
+export TMUX_LOG_DIR="${TMUX_LOG_BASE}/$(date '+%Y/%m/%d')"
+con () {
+  case "$1" in
+    "")
+      NAME="${USER}@${HOSTNAME}"
+      ;;
+    *)
+      NAME=$1
+      ;;
+  esac
+
+  [[ ! -d ${TMUX_LOG_DIR} ]] && mkdir -p ${TMUX_LOG_DIR}
+  tmux attach -t "${NAME}"\; set set-titles on \; set set-titles-string ${NAME} ||
+  tmux new -s    "${NAME}"\; set set-titles on \; set set-titles-string ${NAME}
+}
+
+# Enable .envrc file in directory
+if [[ -e "$(which direnv 2> /dev/null)" ]]; then
+  eval "$(direnv hook bash)"
+fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] &&
+    . "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+# This loads nvm
+export NVM_DIR="$HOME/.nvm"
+[[ -s "$NVM_DIR/nvm.sh" ]] &&
+    . "$NVM_DIR/nvm.sh"
+[[ -s "$NVM_DIR/bash_completion" ]] &&
+    . "$NVM_DIR/bash_completion"
+
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] &&
+    . "$HOME/.rvm/scripts/rvm"
+:
+
+# vim: set ft=sh ts=2 sw=2 et:
