@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of takamatu";
+  description = "Home Manager configuration";
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
@@ -15,9 +15,12 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      #username = builtins.getEnv "USER";
+      # 環境変数が取得できないので直接指定する
+      username = "takamatu";
     in
     {
-      homeConfigurations."takamatu" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,

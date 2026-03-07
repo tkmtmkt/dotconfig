@@ -1,10 +1,15 @@
 { config, pkgs, ... }:
 
+let
+  #username = builtins.getEnv "USER";
+  # 環境変数が取得できないので直接指定する
+  username = "takamatu";
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "takamatu";
-  home.homeDirectory = "/home/takamatu";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -98,7 +103,7 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/takamatu/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/${USER}/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
