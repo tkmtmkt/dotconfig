@@ -27,13 +27,21 @@ in
     # # "Hello, world!" when run.
     # pkgs.hello
     bat                 # catの代替コマンド
+    bottom              # topの代替コマンド
+    byobu               # ターミナルマルチプレクサ
+    delta               # diffの代替コマンド
+    dust                # diffの代替コマンド
+    eza                 # lsの代替コマンド
     fd                  # findの代替コマンド
     fio                 # ディスク性能テストツール
     git                 # バージョン管理ツール
     hexyl               # odの代替コマンド
+    hexyl               # odの代替コマンド
     htop                # topの代替コマンド
+    hyperfine           # timeの代替コマンド
     lnav                # ログビューア
     p7zip               # ファイルアーカイバ
+    parallel            # 並列実行コマンド
     procs               # psの代替コマンド
     pwgen               # ランダムなパスワードを生成するコマンド
     ripgrep             # grepの代替コマンド
@@ -43,6 +51,7 @@ in
     uv                  # Pythonパッケージ管理ツール
     vifm                # ファイルマネージャ
     vim                 # テキストエディタ
+    zoxide              # cdの代替コマンド
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
