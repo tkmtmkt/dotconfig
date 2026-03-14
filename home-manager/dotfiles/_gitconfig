@@ -32,6 +32,12 @@
 	ff = false               # git merge --no-ff
 	tool = vimdiff
 
+[pager]
+	diff = delta
+	show = delta
+	log = delta
+	reflog = delta
+
 [alias]
 	st = status
 	stun = status --untracked-files=no
