@@ -30,7 +30,7 @@ in
     bottom              # topの代替コマンド
     byobu               # ターミナルマルチプレクサ
     delta               # diffの代替コマンド
-    dust                # diffの代替コマンド
+    dust                # duの代替コマンド
     eza                 # lsの代替コマンド
     fd                  # findの代替コマンド
     fio                 # ディスク性能テストツール

@@ -1,6 +1,6 @@
 ### 初期設定
 
-```
+```sh
 # Nixストアディレクトリ作成
 $ sudo mkdir -m 0755 /nix
 $ sudo chown setup:setup /nix
