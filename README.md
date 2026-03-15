@@ -43,18 +43,18 @@ $ nix-collect-garbage --delete-old
 ### home-manager管理
 
 ```sh
-# 設定編集
-$ home-manager edit
-
-# 有効化
+# パッケージ更新
+$ cd ~/.config/home-manager
+$ nix flake update
 $ home-manager switch
 
 # パッケージ一覧
 $ home-manager packages
 
-# パッケージ更新
-$ cd ~/.config/home-manager
-$ nix flake update
+# 設定編集
+$ home-manager edit
+
+# 有効化
 $ home-manager switch
 ```
 
