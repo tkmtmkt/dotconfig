@@ -141,6 +141,7 @@ in
       vim-surround
       vim-vsnip
       vim-vsnip-integ
+      vimagit
     ];
     extraConfig = builtins.readFile ./extra/vimrc.vim;
   };
