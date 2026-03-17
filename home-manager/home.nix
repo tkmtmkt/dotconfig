@@ -50,7 +50,6 @@ in
     tree                # ディレクトリ構造表示ツール
     uv                  # Pythonパッケージ管理ツール
     vifm                # ファイルマネージャ
-    vim                 # テキストエディタ
     zoxide              # cdの代替コマンド
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -120,4 +119,29 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.vim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      SudoEdit-vim
+      ale
+      asyncomplete-lsp-vim
+      asyncomplete-vim
+      context_filetype-vim
+      editorconfig-vim
+      nerdtree
+      tcomment_vim
+      vim-airline
+      vim-airline-clock
+      vim-airline-themes
+      vim-colorschemes
+      vim-fugitive
+      vim-indent-guides
+      vim-lsp
+      vim-lsp-settings
+      vim-surround
+      vim-vsnip
+      vim-vsnip-integ
+    ];
+    extraConfig = builtins.readFile ./extra/vimrc.vim;
+  };
 }
