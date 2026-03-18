@@ -18,21 +18,6 @@ if [[ -f ~/.bash_aliases ]] ; then
 fi
 
 # プロンプト設定
-if [[ -d "$TOOLBOX_DIR" ]]; then
-  if [[ -s "$TOOLBOX_DIR/completion" ]]; then
-    for COMPLETION_FILE in $(ls $TOOLBOX_DIR/completion/*.bash)
-    do
-      . $COMPLETION_FILE
-    done
-  fi
-  [[ -s "$TOOLBOX_DIR/share/git-core/contrib/completion/git-completion.bash" ]] && \
-      . "$TOOLBOX_DIR/share/git-core/contrib/completion/git-completion.bash"
-  [[ -s "$TOOLBOX_DIR/share/git-core/contrib/completion/git-prompt.sh" ]] && \
-      . "$TOOLBOX_DIR/share/git-core/contrib/completion/git-prompt.sh"
-  PG_="\[\e[4;31m\]\$(__git_ps1)"
-  GIT_PS1_SHOWDIRTYSTATE=true
-fi
-
 case "$TERM" in
 linux)
   export LC_MESSAGES=C
@@ -73,6 +58,11 @@ con () {
   tmux attach -t "${NAME}"\; set set-titles on \; set set-titles-string ${NAME} ||
   tmux new -s    "${NAME}"\; set set-titles on \; set set-titles-string ${NAME}
 }
+
+# Nixプロファイル内のbash-completionを読み込む
+if [ -f $HOME/.nix-profile/share/bash-completion/bash_completion ]; then
+  . $HOME/.nix-profile/share/bash-completion/bash_completion
+fi
 
 # Enable .envrc file in directory
 if [[ -e "$(which direnv 2> /dev/null)" ]]; then
