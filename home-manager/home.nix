@@ -25,6 +25,7 @@ in
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    bash-completion     # bash環境用のコマンド入力補完
     bat                 # catの代替コマンド
     bottom              # topの代替コマンド
     byobu               # ターミナルマルチプレクサ
