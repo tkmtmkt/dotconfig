@@ -11,7 +11,7 @@ $ . ~/.nix-profile/etc/profile.d/nix.sh
 $ nix --version
 
 # home-manager有効化
-$ nix run home-manager switch
+$ nix run home-manager switch --impure
 ```
 
 ### Nix管理
@@ -55,7 +55,7 @@ $ home-manager packages
 $ home-manager edit
 
 # 有効化
-$ home-manager switch
+$ home-manager switch --impure
 ```
 
 ### 補足

@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 
 let
-  #username = builtins.getEnv "USER";
-  # 環境変数が取得できないので直接指定する
-  username = "takamatu";
+  # 環境変数を取得するためnix実行時に--impureオプションを指定する
+  username = builtins.getEnv "USER";
 in
 {
   # Home Manager needs a bit of information about you and the paths it should

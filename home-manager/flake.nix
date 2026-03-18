@@ -15,9 +15,8 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      #username = builtins.getEnv "USER";
-      # 環境変数が取得できないので直接指定する
-      username = "takamatu";
+      # 環境変数を取得するためnix実行時に--impureオプションを指定する
+      username = builtins.getEnv "USER";
     in
     {
       homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
