@@ -14,6 +14,21 @@ $ nix --version
 $ nix run home-manager switch --impure
 ```
 
+### home-manager管理
+
+```sh
+# パッケージ更新
+$ cd ~/.config/home-manager
+$ nix flake update
+$ home-manager switch --impure
+
+# パッケージ一覧
+$ home-manager packages
+
+# 設定編集
+$ home-manager edit
+```
+
 ### Nix管理
 
 ```sh
@@ -40,30 +55,14 @@ $ nix store gc
 $ nix-collect-garbage --delete-old
 ```
 
-### home-manager管理
-
-```sh
-# パッケージ更新
-$ cd ~/.config/home-manager
-$ nix flake update
-$ home-manager switch
-
-# パッケージ一覧
-$ home-manager packages
-
-# 設定編集
-$ home-manager edit
-
-# 有効化
-$ home-manager switch --impure
-```
-
 ### 補足
 
 ```
 |-- .config/
 |   |-- home-manager/
 |   |   |-- dotfiles/
+|   |   |-- extra/
+|   |   |   `-- vimrc.vim               vim設定ファイル
 |   |   |-- flake.lock
 |   |   |-- flake.nix
 |   |   `-- home.nix
