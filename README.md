@@ -3,7 +3,7 @@
 ```sh
 # Nixストアディレクトリ作成
 $ sudo mkdir -m 0755 /nix
-$ sudo chown setup:setup /nix
+$ sudo chown ${USER}:${USER} /nix
 
 # Nixインストール
 $ sh <(curl -L https://nixos.org/nix/install) --no-daemon
@@ -11,7 +11,22 @@ $ . ~/.nix-profile/etc/profile.d/nix.sh
 $ nix --version
 
 # home-manager有効化
-$ nix run home-manager switch --impure
+$ nix run home-manager -- switch --impure
+```
+
+### home-manager管理
+
+```sh
+# パッケージ更新
+$ cd ~/.config/home-manager
+$ nix flake update
+$ home-manager switch --impure
+
+# パッケージ一覧
+$ home-manager packages
+
+# 設定編集
+$ home-manager edit
 ```
 
 ### Nix管理
@@ -40,30 +55,15 @@ $ nix store gc
 $ nix-collect-garbage --delete-old
 ```
 
-### home-manager管理
-
-```sh
-# パッケージ更新
-$ cd ~/.config/home-manager
-$ nix flake update
-$ home-manager switch
-
-# パッケージ一覧
-$ home-manager packages
-
-# 設定編集
-$ home-manager edit
-
-# 有効化
-$ home-manager switch --impure
-```
-
 ### 補足
 
 ```
+${HOME}
 |-- .config/
 |   |-- home-manager/
 |   |   |-- dotfiles/
+|   |   |-- extra/
+|   |   |   `-- vimrc.vim               vim設定ファイル
 |   |   |-- flake.lock
 |   |   |-- flake.nix
 |   |   `-- home.nix
@@ -81,12 +81,12 @@ $ home-manager switch --impure
 |           `-- profiles/
 |               |-- channels -> channels-1-link/
 |               |-- channels-1-link -> /nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-user-environment/
-|               `-- profile -> profile-1-link/
+|               |-- profile -> profile-1-link/
 |               `-- profile-1-link -> /nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-user-environment/
 |-- .nix-defexpr/
-|   |-- channels -> /home/takamatu/.local/state/nix/profiles/channels/
+|   |-- channels -> ${HOME}/.local/state/nix/profiles/channels/
 |   `-- channels_root -> /nix/var/nix/profiles/per-user/root/channels
-|-- .nix-profile -> /home/takamatu/.local/state/nix/profiles/profile/
+|-- .nix-profile -> ${HOME}/.local/state/nix/profiles/profile/
 |   |-- bin/
 |   |-- etc/
 |   |-- lib/
