@@ -36,7 +36,6 @@ in
     fio                 # ディスク性能テストツール
     git                 # バージョン管理ツール
     hexyl               # odの代替コマンド
-    hexyl               # odの代替コマンド
     htop                # topの代替コマンド
     hyperfine           # timeの代替コマンド
     lnav                # ログビューア
