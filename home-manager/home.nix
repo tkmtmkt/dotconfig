@@ -79,16 +79,16 @@ in
     ".bash_profile".source = dotfiles/_bash_profile;
     ".bashrc".force = true;
     ".bashrc".source = dotfiles/_bashrc;
-    ".gitconfig".force = true;
-    ".gitconfig".source = dotfiles/_gitconfig;
-    ".gitexclude".force = true;
-    ".gitexclude".source = dotfiles/_gitexclude;
     ".profile".force = true;
     ".profile".source = dotfiles/_profile;
-    ".tigrc".force = true;
-    ".tigrc".source = dotfiles/_tigrc;
-    ".tmux.conf".force = true;
-    ".tmux.conf".source = dotfiles/_tmux.conf;
+    ".config/git/config".force = true;
+    ".config/git/config".source = dotfiles/_gitconfig;
+    ".config/git/exclude".force = true;
+    ".config/git/exclude".source = dotfiles/_gitexclude;
+    ".config/tig/config".force = true;
+    ".config/tig/config".source = dotfiles/_tigrc;
+    ".config/tmux/tmux.conf".force = true;
+    ".config/tmux/tmux.conf".source = dotfiles/_tmux.conf;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
