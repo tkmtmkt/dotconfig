@@ -39,6 +39,7 @@ in
     htop                # topの代替コマンド
     hyperfine           # timeの代替コマンド
     lnav                # ログビューア
+    nodejs_25           # JavaScript実行環境
     p7zip               # ファイルアーカイバ
     parallel            # 並列実行コマンド
     procs               # psの代替コマンド
