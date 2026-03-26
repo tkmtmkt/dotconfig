@@ -82,13 +82,13 @@ in
     ".profile".force = true;
     ".profile".source = dotfiles/_profile;
     ".config/git/config".force = true;
-    ".config/git/config".source = dotfiles/_gitconfig;
+    ".config/git/config".source = dotfiles/_config/git/config;
     ".config/git/exclude".force = true;
-    ".config/git/exclude".source = dotfiles/_gitexclude;
+    ".config/git/exclude".source = dotfiles/_config/git/exclude;
     ".config/tig/config".force = true;
-    ".config/tig/config".source = dotfiles/_tigrc;
+    ".config/tig/config".source = dotfiles/_config/tig/config;
     ".config/tmux/tmux.conf".force = true;
-    ".config/tmux/tmux.conf".source = dotfiles/_tmux.conf;
+    ".config/tmux/tmux.conf".source = dotfiles/_config/tmux/tmux.conf;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

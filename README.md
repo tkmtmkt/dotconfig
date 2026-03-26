@@ -1,31 +1,18 @@
-### 初期設定
+### 操作
 
 ```sh
-# Nixストアディレクトリ作成
-$ sudo mkdir -m 0755 /nix
-$ sudo chown ${USER}:${USER} /nix
+# 初期設定
+$ git clone git@github.com:tkmtmkt/nix-config.git ~/.nix-config
+$ cd ~/.nix-config
+$ bin/setup.sh
 
-# Nixインストール
-$ sh <(curl -L https://nixos.org/nix/install) --no-daemon
-$ . ~/.nix-profile/etc/profile.d/nix.sh
-$ nix --version
+# home-manager設定反映
+$ bin/home-manager-switch.sh
 
-# home-manager有効化
-$ nix run home-manager -- switch --impure
-```
-
-### home-manager管理
-
-```sh
-# パッケージ更新
-$ cd ~/.config/home-manager
-$ nix flake update
-$ home-manager switch --impure
-
-# パッケージ一覧
+# home-managerパッケージ一覧
 $ home-manager packages
 
-# 設定編集
+# home-manager設定編集
 $ home-manager edit
 ```
 
@@ -57,25 +44,34 @@ $ nix-collect-garbage --delete-old
 
 ### 補足
 
+#### リポジトリ内容
 ```
 ${HOME}
-|-- .config/
+|-- .nix-config/
+|   |-- bin/
+|   |   |-- home-manager-switch.sh*
+|   |   |-- nix-flake-update.sh*
+|   |   `-- setup.sh*
 |   |-- home-manager/
 |   |   |-- dotfiles/
 |   |   |-- extra/
 |   |   |   `-- vimrc.vim               vim設定ファイル
-|   |   |-- flake.lock
-|   |   |-- flake.nix
 |   |   `-- home.nix
 |   |-- nix/
-|   |   `-- nix.conf
+|   |   `-- nix.conf                    Nix設定ファイル(/etc/nix/nix.confにコピーする)
 |   |-- .gitignore
+|   |-- flake.lock
+|   |-- flake.nix
 |   `-- README.md
+```
+
+#### 実行環境のファイル構成
+```
+${HOME}
+|-- .config/
+|   `-- nix/
+|       `-- nix.conf
 |-- .local/
-|   |-- share/
-|   |   `-- uv/
-|   |       |-- python/
-|   |       `-- tools/
 |   `-- state/
 |       `-- nix/
 |           `-- profiles/
@@ -93,7 +89,7 @@ ${HOME}
 |   |-- libexec/
 |   |-- sbin/
 |   `-- share/
-|-- .nix-channels
+`-- .nix-channels
 ```
 
 ### 参考
