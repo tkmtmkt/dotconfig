@@ -30,6 +30,7 @@ in
     bottom              # topの代替コマンド
     byobu               # ターミナルマルチプレクサ
     delta               # diffの代替コマンド
+    devbox              # 開発環境構築ツール
     dust                # duの代替コマンド
     eza                 # lsの代替コマンド
     fd                  # findの代替コマンド
@@ -39,7 +40,6 @@ in
     htop                # topの代替コマンド
     hyperfine           # timeの代替コマンド
     lnav                # ログビューア
-    nodejs_25           # JavaScript実行環境
     p7zip               # ファイルアーカイバ
     parallel            # 並列実行コマンド
     procs               # psの代替コマンド
