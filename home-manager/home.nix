@@ -25,32 +25,35 @@ in
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
-    bash-completion     # bash環境用のコマンド入力補完
+    # 代替コマンド
     bat                 # catの代替コマンド
     bottom              # topの代替コマンド
-    byobu               # ターミナルマルチプレクサ
     delta               # diffの代替コマンド
-    devbox              # 開発環境構築ツール
     dust                # duの代替コマンド
     eza                 # lsの代替コマンド
     fd                  # findの代替コマンド
-    fio                 # ディスク性能テストツール
-    git                 # バージョン管理ツール
     hexyl               # odの代替コマンド
     htop                # topの代替コマンド
     hyperfine           # timeの代替コマンド
+    procs               # psの代替コマンド
+    ripgrep             # grepの代替コマンド
+    zoxide              # cdの代替コマンド
+    # 開発用ツール
+    devbox              # 開発環境構築ツール
+    uv                  # Pythonパッケージ管理ツール
+    # その他ツール
+    bash-completion     # bash環境用のコマンド入力補完
+    byobu               # ターミナルマルチプレクサ
+    fio                 # ディスク性能テストツール
+    git                 # バージョン管理ツール
     lnav                # ログビューア
     p7zip               # ファイルアーカイバ
     parallel            # 並列実行コマンド
-    procs               # psの代替コマンド
     pwgen               # ランダムなパスワードを生成するコマンド
-    ripgrep             # grepの代替コマンド
     tig                 # gitブラウザ
     tmux                # ターミナルエミュレータ
     tree                # ディレクトリ構造表示ツール
-    uv                  # Pythonパッケージ管理ツール
     vifm                # ファイルマネージャ
-    zoxide              # cdの代替コマンド
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
