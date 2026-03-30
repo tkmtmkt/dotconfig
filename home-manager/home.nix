@@ -40,6 +40,8 @@ in
     zoxide              # cdの代替コマンド
     # 開発用ツール
     devbox              # 開発環境構築ツール
+    direnv              # 環境変数自動設定ツール
+    nix-direnv          # nix用のdirenv拡張機能
     uv                  # Pythonパッケージ管理ツール
     # その他ツール
     bash-completion     # bash環境用のコマンド入力補完
@@ -125,6 +127,14 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # direnvのシェル統合設定
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+  # Vim設定
+
   programs.vim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
