@@ -69,25 +69,9 @@ if [[ -e "$(which direnv 2> /dev/null)" ]]; then
   eval "$(direnv hook bash)"
 fi
 
+# 補完設定(zoxide)
 if [[ -e "$(which zoxide 2> /dev/null)" ]]; then
   eval "$(zoxide init bash)"
 fi
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] &&
-    . "$SDKMAN_DIR/bin/sdkman-init.sh"
-
-# This loads nvm
-export NVM_DIR="$HOME/.nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] &&
-    . "$NVM_DIR/nvm.sh"
-[[ -s "$NVM_DIR/bash_completion" ]] &&
-    . "$NVM_DIR/bash_completion"
-
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] &&
-    . "$HOME/.rvm/scripts/rvm"
-:
 
 # vim: set ft=sh ts=2 sw=2 et:
