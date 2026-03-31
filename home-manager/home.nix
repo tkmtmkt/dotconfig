@@ -122,7 +122,7 @@ in
   #  /etc/profiles/per-user/${USER}/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
 
   # Let Home Manager install and manage itself.
@@ -133,8 +133,8 @@ in
     enable = true;
     nix-direnv.enable = true;
   };
-  # Vim設定
 
+  # Vim設定
   programs.vim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [

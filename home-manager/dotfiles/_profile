@@ -3,7 +3,6 @@
 # User specific environment and startup programs
 
 # 環境変数設定
-export EDITOR=vim
 export XDG_CONFIG_HOME="${HOME}/.config"
 
 # User specific environment and startup programs
