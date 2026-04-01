@@ -2,8 +2,8 @@
 
 ```sh
 # 初期設定
-$ git clone git@github.com:tkmtmkt/nix-config.git ~/.nix-config
-$ cd ~/.nix-config
+$ git clone git@github.com:tkmtmkt/dotconfig.git ~/.config
+$ cd ~/.config/home-manager
 $ bin/setup.sh
 
 # home-manager設定反映
@@ -47,21 +47,22 @@ $ nix-collect-garbage --delete-old
 #### リポジトリ内容
 ```
 ${HOME}
-|-- .nix-config/
-|   |-- bin/
-|   |   |-- home-manager-switch.sh*
-|   |   |-- nix-flake-update.sh*
-|   |   `-- setup.sh*
+|-- .config/
 |   |-- home-manager/
+|   |   |-- bin/
+|   |   |   |-- home-manager-switch.sh*
+|   |   |   |-- nix-flake-update.sh*
+|   |   |   |-- nix-store-gc.sh*
+|   |   |   `-- setup.sh*
 |   |   |-- dotfiles/
 |   |   |-- extra/
 |   |   |   `-- vimrc.vim               vim設定ファイル
+|   |   |-- flake.lock
+|   |   |-- flake.nix
 |   |   `-- home.nix
 |   |-- nix/
-|   |   `-- nix.conf                    Nix設定ファイル(/etc/nix/nix.confにコピーする)
+|   |   `-- nix.conf                    Nix設定ファイル
 |   |-- .gitignore
-|   |-- flake.lock
-|   |-- flake.nix
 |   `-- README.md
 ```
 

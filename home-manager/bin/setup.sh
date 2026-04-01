@@ -12,10 +12,6 @@ set -o pipefail
 sudo mkdir -p -m 0755 /nix
 sudo chown ${USER}:${USER} /nix
 
-# Nix設定ファイル配置
-sudo mkdir -p /etc/nix
-sudo cp ${BASE_DIR}/nix/nix.conf /etc/nix/
-
 # Nixインストール
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 . ~/.nix-profile/etc/profile.d/nix.sh
