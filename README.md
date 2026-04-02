@@ -6,6 +6,13 @@ $ git clone git@github.com:tkmtmkt/dotconfig.git ~/.config
 $ cd ~/.config/home-manager
 $ bin/setup.sh
 
+# 再設定
+$ rm -rf ~/.local/state/nix
+$ bin/setup.sh
+
+# Nixパッケージ更新
+$ bin/nix-flake-update.sh
+
 # home-manager設定反映
 $ bin/home-manager-switch.sh
 
@@ -20,6 +27,8 @@ $ home-manager edit
 
 ```sh
 # Nixを更新する
+# ※これは使えない。以下のエラーで失敗する。成功した場合はバージョンが古いものになる。
+# error: directory "xxxx profile" is managed by 'nix profile' and currently cannot be upgraded by 'nix upgrade-nix'
 $ nix upgrade-nix
 
 # パッケージ一覧
@@ -32,7 +41,7 @@ $ nix search nixpkgs#パッケージ名 ^
 $ nix profile add nixpkgs#パッケージ名
 
 # パッケージを更新する
-$ nix profile update パッケージ名
+$ nix profile upgrade パッケージ名
 
 # パッケージを削除する
 $ nix profile remove パッケージ名
