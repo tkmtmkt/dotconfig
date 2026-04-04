@@ -45,6 +45,7 @@ in
     uv                  # Pythonパッケージ管理ツール
     # その他ツール
     bash-completion     # bash環境用のコマンド入力補完
+    bc                  # 計算機
     byobu               # ターミナルマルチプレクサ
     fio                 # ディスク性能テストツール
     git                 # バージョン管理ツール
@@ -54,6 +55,7 @@ in
     lnav                # ログビューア
     p7zip               # ファイルアーカイバ
     parallel            # 並列実行コマンド
+    powershell          # PowerShell
     pwgen               # ランダムなパスワードを生成するコマンド
     tig                 # ターミナル上でgit操作を行うためのCUIツール
     tmux                # ターミナルエミュレータ
