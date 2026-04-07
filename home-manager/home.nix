@@ -27,38 +27,26 @@ in
     # pkgs.hello
     # 代替コマンド
     bat                 # catの代替コマンド
-    bottom              # topの代替コマンド
-    delta               # diffの代替コマンド
     dust                # duの代替コマンド
-    eza                 # lsの代替コマンド
-    fd                  # findの代替コマンド
     hexyl               # odの代替コマンド
-    htop                # topの代替コマンド
     hyperfine           # timeの代替コマンド
     procs               # psの代替コマンド
-    ripgrep             # grepの代替コマンド
-    zoxide              # cdの代替コマンド
     # 開発用ツール
     devbox              # 開発環境構築ツール
-    uv                  # Pythonパッケージ管理ツール
     # その他ツール
     bash-completion     # bash環境用のコマンド入力補完
     bc                  # 計算機
     byobu               # ターミナルマルチプレクサ
     fio                 # ディスク性能テストツール
     git                 # バージョン管理ツール
-    jq                  # JSONデータ処理ツール
-    lazygit             # ターミナル上で動作する高速・軽量なGitクライアント（TUI）
     libxml2             # XMLファイルの解析、整形、検証ツール
     lnav                # ログビューア
     p7zip               # ファイルアーカイバ
-    parallel            # 並列実行コマンド
     powershell          # PowerShell
     pwgen               # ランダムなパスワードを生成するコマンド
     tig                 # ターミナル上でgit操作を行うためのCUIツール
     tmux                # ターミナルエミュレータ
     tree                # ディレクトリ構造表示ツール
-    vifm                # ファイルマネージャ
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -128,15 +116,28 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # direnvのシェル統合設定
-  programs.direnv = {
+  # 代替コマンド
+  programs.bottom.enable = true;        # topの代替コマンド
+  programs.delta.enable = true;         # diffの代替コマンド
+  programs.eza.enable = true;           # lsの代替コマンド
+  programs.fd.enable = true;            # findの代替コマンド
+  programs.htop.enable = true;          # topの代替コマンド
+  programs.ripgrep.enable = true;       # grepの代替コマンド
+
+  # 開発用ツール
+  programs.direnv = {                   # direnvのシェル統合設定
     enable = true;
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
+  programs.uv.enable = true;            # Pythonパッケージ管理ツール
 
-  # Vim設定
-  programs.vim = {
+  # その他ツール
+  programs.jq.enable = true;            # JSONデータ処理ツール
+  programs.lazygit.enable = true;       # ターミナル上で動作する高速・軽量なGitクライアント（TUI）
+  programs.parallel.enable = true;      # 並列実行コマンド
+  programs.vifm.enable = true;          # ファイルマネージャ
+  programs.vim = {                      # Vim設定
     enable = true;
     plugins = with pkgs.vimPlugins; [
       SudoEdit-vim
@@ -161,5 +162,12 @@ in
       vimagit
     ];
     extraConfig = builtins.readFile ./extra/vimrc.vim;
+  };
+  programs.zoxide = {                   # zoxideのシェル統合設定
+    enable = true;
+    enableBashIntegration =true;
+    options = [
+      "--cmd cd"
+    ];
   };
 }
