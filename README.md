@@ -71,6 +71,10 @@ ${HOME}
 |   |   |   `-- setup.sh*
 |   |   |-- dotfiles/
 |   |   |-- extra/
+|   |   |   |-- bash/                   bash設定ファイル
+|   |   |   |   |-- aliases.vim
+|   |   |   |   |-- bashrc
+|   |   |   |   `-- profile
 |   |   |   `-- vimrc.vim               vim設定ファイル
 |   |   |-- flake.lock
 |   |   |-- flake.nix

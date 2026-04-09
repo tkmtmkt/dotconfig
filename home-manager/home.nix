@@ -76,14 +76,6 @@ in
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".bash_aliases".force = true;
-    ".bash_aliases".source = dotfiles/_bash_aliases;
-    ".bash_profile".force = true;
-    ".bash_profile".source = dotfiles/_bash_profile;
-    ".bashrc".force = true;
-    ".bashrc".source = dotfiles/_bashrc;
-    ".profile".force = true;
-    ".profile".source = dotfiles/_profile;
     ".config/git/config".force = true;
     ".config/git/config".source = dotfiles/_config/git/config;
     ".config/git/exclude".force = true;
@@ -107,6 +99,7 @@ in
   #
   home.sessionVariables = {
     EDITOR = "vim";
+    HISTTIMEFORMAT = "[%F %T] ";
   };
 
   # programs.<name>に指定するプログラムの設定については、以下のURLにある
@@ -115,6 +108,13 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.bash = {
+    enable = true;
+    bashrcExtra = builtins.readFile ./extra/bash/bashrc;
+    profileExtra = builtins.readFile ./extra/bash/profile;
+    shellAliases = import ./extra/bash/aliases.nix;
+  };
 
   # 代替コマンド
   programs.bottom.enable = true;        # 代替コマンド: top

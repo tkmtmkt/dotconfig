@@ -1,0 +1,12 @@
+# Nix設定
+if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
+  . ~/.nix-profile/etc/profile.d/nix.sh
+fi
+
+# ローカルbinをPATHに追加する
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+  export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+
+# vim: set ft=sh ts=2 sw=2 et:

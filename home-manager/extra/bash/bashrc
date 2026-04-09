@@ -1,21 +1,8 @@
-# .bashrc
-
-# Source global definitions
-if [[ -f /etc/bashrc ]]; then
-  . /etc/bashrc
-fi
-
-# Source original definitions
-if [[ -f /etc/skel/.bashrc ]] ; then
-  . /etc/skel/.bashrc
-fi
-
-# User specific aliases and functions
-
+# vim: set ft=sh ts=2 sw=2 et:
 # エリアス設定
-if [[ -f ~/.bash_aliases ]] ; then
-  . ~/.bash_aliases
-fi
+#if [[ -f ~/.bash_aliases ]] ; then
+#  . ~/.bash_aliases
+#fi
 
 # プロンプト設定
 case "$TERM" in
@@ -58,20 +45,3 @@ con () {
   tmux attach -t "${NAME}"\; set set-titles on \; set set-titles-string ${NAME} ||
   tmux new -s    "${NAME}"\; set set-titles on \; set set-titles-string ${NAME}
 }
-
-# Nixプロファイル内のbash-completionを読み込む
-if [ -f $HOME/.nix-profile/share/bash-completion/bash_completion ]; then
-  . $HOME/.nix-profile/share/bash-completion/bash_completion
-fi
-
-# Enable .envrc file in directory
-if [[ -e "$(which direnv 2> /dev/null)" ]]; then
-  eval "$(direnv hook bash)"
-fi
-
-# 補完設定(zoxide)
-if [[ -e "$(which zoxide 2> /dev/null)" ]]; then
-  eval "$(zoxide init bash --cmd cd)"
-fi
-
-# vim: set ft=sh ts=2 sw=2 et:
