@@ -4,12 +4,13 @@ let
   # 以下の設定を有効にするためnix実行時に--impureオプションを指定すること。
   # --impureオプションを指定しないとgetEnvはブランクを返す。
   username = builtins.getEnv "USER";
+  homeDirectory = "/home/${username}";
 in
 {
   # ホームマネージャーは、あなたに関する情報と、管理すべきパスに関する情報を
   # 必要とします。
   home.username = "${username}";
-  home.homeDirectory = "/home/${username}";
+  home.homeDirectory = "${homeDirectory}";
 
   # この値は、お使いの構成が互換性を持つ Home Manager のリリースバージョンを
   # 決定します。これにより、新しい Home Manager リリースで後方互換性のない
@@ -100,6 +101,7 @@ in
   home.sessionVariables = {
     EDITOR = "vim";
     HISTTIMEFORMAT = "[%F %T] ";
+    RIPGREP_CONFIG_PATH = "${homeDirectory}/.config/ripgrep/ripgreprc";
   };
 
   # programs.<name>に指定するプログラムの設定については、以下のURLにある
@@ -122,7 +124,7 @@ in
   programs.eza = import ./extra/eza.nix;    # 代替コマンド: ls
   programs.fd.enable = true;            # 代替コマンド: find
   programs.htop.enable = true;          # 代替コマンド: top
-  programs.ripgrep.enable = true;       # 代替コマンド: grep
+  programs.ripgrep = import ./extra/ripgrep.nix;  # 代替コマンド: grep
 
   # 開発用ツール
   programs.direnv = {                   # direnvのシェル統合設定
