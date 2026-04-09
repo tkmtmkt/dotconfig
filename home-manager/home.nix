@@ -135,6 +135,7 @@ in
   # その他ツール
   programs.jq.enable = true;            # JSONデータ処理ツール
   programs.lazygit.enable = true;       # ターミナル上で動作する高速・軽量なGitクライアント（TUI）
+  programs.fzf.enable = true;           # 曖昧検索（ファジーファインダー）ツール
   programs.parallel.enable = true;      # 並列実行コマンド
   programs.vifm.enable = true;          # ファイルマネージャ
   programs.vim = {                      # Vim設定
