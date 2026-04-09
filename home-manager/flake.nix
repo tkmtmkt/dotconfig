@@ -2,7 +2,7 @@
   description = "Home Manager configuration";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
+    # Home ManagerとNixpkgsのソースを指定してください。
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -22,12 +22,12 @@
       homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
+        # ここにホーム設定モジュールを指定してください。
+        # 例えば、home.nixへのパスなどです。
         modules = [ ./home.nix ];
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+        # オプションとして extraSpecialArgs を使用して、
+        # 引数を home.nix に渡します。
       };
     };
 }

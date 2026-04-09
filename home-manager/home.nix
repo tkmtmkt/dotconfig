@@ -1,30 +1,43 @@
 { config, pkgs, ... }:
 
 let
-  # 環境変数を取得するためnix実行時に--impureオプションを指定する
+  # 以下の設定を有効にするためnix実行時に--impureオプションを指定すること。
+  # --impureオプションを指定しないとgetEnvはブランクを返す。
   username = builtins.getEnv "USER";
 in
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  # ホームマネージャーは、あなたに関する情報と、管理すべきパスに関する情報を
+  # 必要とします。
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
+  # この値は、お使いの構成が互換性を持つ Home Manager のリリースバージョンを
+  # 決定します。これにより、新しい Home Manager リリースで後方互換性のない
+  # 変更が導入された場合でも、互換性の問題が発生するのを防ぐことができます。
   #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "25.11"; # Please read the comment before changing.
+  # Home Manager をアップデートする場合でも、この値を変更しないでください。
+  # もし値を変更したい場合は、必ず Home Manager のリリースノートを確認して
+  # ください。
+  home.stateVersion = "25.11"; # 変更する前にコメントをお読みください。
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
+  # home.packages オプションを使用すると、Nix パッケージを環境にインストール
+  # できます。
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
+    # # 環境に「hello」コマンドを追加します。実行すると、親しみやすい
+    # # 「Hello, world!」というメッセージが表示されます。
     # pkgs.hello
+
+    # # パッケージを微調整したい場合、例えばオーバーライドを適用すると便利なこと
+    # # があります。ここで直接設定できますが、括弧を忘れないようにしてください。
+    # # 例えば、Nerd Fontsを限られた数のフォントでインストールしたい場合などです。
+    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+
+    # # 設定ファイル内に簡単なシェルスクリプトを直接作成することもできます。
+    # # 例えば、以下のコードは「my-hello」というコマンドを環境に追加します。
+    # (pkgs.writeShellScriptBin "my-hello" ''
+    #   echo "Hello, ${config.home.username}!"
+    # '')
+
     # 代替コマンド
     bat                 # catの代替コマンド
     dust                # duの代替コマンド
@@ -47,28 +60,22 @@ in
     tig                 # ターミナル上でgit操作を行うためのCUIツール
     tmux                # ターミナルエミュレータ
     tree                # ディレクトリ構造表示ツール
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
+  # Home Managerはドットファイルの管理に非常に優れています。
+  # プレーンファイルを管理する主な方法は「home.file」を使用することです。
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
+    # # この設定をビルドすると、Nixストアに「dotfiles/screenrc」のコピーが作成
+    # # されます。設定を有効化すると、「~/.screenrc」はNixストアに作成された
+    # # コピーへのシンボリックリンクになります。
     # ".screenrc".source = dotfiles/screenrc;
+
+    # # ファイルの内容は即座に設定することもできます。
+    # ".gradle/gradle.properties".text = ''
+    #   org.gradle.console=verbose
+    #   org.gradle.daemon.idletimeout=3600000
+    # '';
+
     ".bash_aliases".force = true;
     ".bash_aliases".source = dotfiles/_bash_aliases;
     ".bash_profile".force = true;
@@ -85,44 +92,37 @@ in
     ".config/tig/config".source = dotfiles/_config/tig/config;
     ".config/tmux/tmux.conf".force = true;
     ".config/tmux/tmux.conf".source = dotfiles/_config/tmux/tmux.conf;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
+  # Home Manager は、環境変数を 'home.sessionVariables' を通じて管理することも
+  # できます。これらの変数は、Home Manager が提供するシェルを使用する際に
+  # 明示的に読み込まれます。Home Manager を介してシェルを管理したくない場合は、
+  # 以下の場所にある 'hm-session-vars.sh' を手動で読み込む必要があります。
   #
   #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
   # or
-  #
   #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
   # or
-  #
   #  /etc/profiles/per-user/${USER}/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     EDITOR = "vim";
   };
 
+  # programs.<name>に指定するプログラムの設定については、以下のURLにある
+  # Nixソースコードを参照してください。
+  # https://github.com/nix-community/home-manager/tree/master/modules/programs
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   # 代替コマンド
-  programs.bottom.enable = true;        # topの代替コマンド
-  programs.delta.enable = true;         # diffの代替コマンド
-  programs.eza.enable = true;           # lsの代替コマンド
-  programs.fd.enable = true;            # findの代替コマンド
-  programs.htop.enable = true;          # topの代替コマンド
-  programs.ripgrep.enable = true;       # grepの代替コマンド
+  programs.bottom.enable = true;        # 代替コマンド: top
+  programs.delta.enable = true;         # 代替コマンド: diff
+  programs.eza.enable = true;           # 代替コマンド: ls
+  programs.fd.enable = true;            # 代替コマンド: find
+  programs.htop.enable = true;          # 代替コマンド: top
+  programs.ripgrep.enable = true;       # 代替コマンド: grep
 
   # 開発用ツール
   programs.direnv = {                   # direnvのシェル統合設定
