@@ -54,6 +54,8 @@ $ nix profile remove パッケージ名
 
 # Nixストアのガベージコレクション
 $ nix store gc
+
+# 古い世代や不要なパッケージを削除する
 $ nix-collect-garbage --delete-old
 ```
 

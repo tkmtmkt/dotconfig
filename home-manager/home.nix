@@ -40,14 +40,14 @@ in
     # '')
 
     # 代替コマンド
-    bat                 # catの代替コマンド
+    bat                 # 代替コマンド: cat
     bottom              # 代替コマンド: top
-    dust                # duの代替コマンド
+    dust                # 代替コマンド: du
     fd                  # 代替コマンド: find
-    hexyl               # odの代替コマンド
+    hexyl               # 代替コマンド: od
     htop                # 代替コマンド: top
-    hyperfine           # timeの代替コマンド
-    procs               # psの代替コマンド
+    hyperfine           # 代替コマンド: time
+    procs               # 代替コマンド: ps
     # 開発用ツール
     devbox              # 開発環境構築ツール
     uv                  # Pythonパッケージ管理ツール
