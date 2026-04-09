@@ -48,6 +48,7 @@ in
     htop                # 代替コマンド: top
     hyperfine           # 代替コマンド: time
     procs               # 代替コマンド: ps
+    tldr                # 代替コマンド: man
     # 開発用ツール
     devbox              # 開発環境構築ツール
     uv                  # Pythonパッケージ管理ツール
