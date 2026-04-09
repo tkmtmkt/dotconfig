@@ -118,7 +118,7 @@ in
 
   # 代替コマンド
   programs.bottom.enable = true;        # 代替コマンド: top
-  programs.delta.enable = true;         # 代替コマンド: diff
+  programs.delta = import ./extra/delta.nix;# 代替コマンド: diff
   programs.eza = import ./extra/eza.nix;    # 代替コマンド: ls
   programs.fd.enable = true;            # 代替コマンド: find
   programs.htop.enable = true;          # 代替コマンド: top
