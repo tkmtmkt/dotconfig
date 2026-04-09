@@ -8,4 +8,4 @@ set -o nounset
 set -o pipefail
 #set -o xtrace
 
-home-manager switch --impure --flake ${BASE_DIR}
+home-manager switch -b $(date +%F-%H%M) --impure --flake ${BASE_DIR}
