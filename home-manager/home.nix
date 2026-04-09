@@ -77,14 +77,18 @@ in
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".config/git/config".force = true;
-    ".config/git/config".source = dotfiles/_config/git/config;
-    ".config/git/exclude".force = true;
-    ".config/git/exclude".source = dotfiles/_config/git/exclude;
-    ".config/tig/config".force = true;
-    ".config/tig/config".source = dotfiles/_config/tig/config;
-    ".config/tmux/tmux.conf".force = true;
-    ".config/tmux/tmux.conf".source = dotfiles/_config/tmux/tmux.conf;
+  };
+
+  # ~/.configに配置するファイルを設定する。
+  xdg.configFile = {
+    "git/config".force = true;
+    "git/config".source = dotfiles/_config/git/config;
+    "git/exclude".force = true;
+    "git/exclude".source = dotfiles/_config/git/exclude;
+    "tig/config".force = true;
+    "tig/config".source = dotfiles/_config/tig/config;
+    "tmux/tmux.conf".force = true;
+    "tmux/tmux.conf".source = dotfiles/_config/tmux/tmux.conf;
   };
 
   # Home Manager は、環境変数を 'home.sessionVariables' を通じて管理することも
