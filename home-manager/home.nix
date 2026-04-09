@@ -40,7 +40,6 @@ in
     # '')
 
     # 代替コマンド
-    bat                 # 代替コマンド: cat
     bottom              # 代替コマンド: top
     dust                # 代替コマンド: du
     fd                  # 代替コマンド: find
@@ -125,6 +124,7 @@ in
   imports = [
     ./programs/bash/bash.nix
     # 代替コマンド
+    ./programs/bat.nix                  # 代替コマンド: cat,less
     ./programs/delta.nix                # 代替コマンド: diff
     ./programs/eza.nix                  # 代替コマンド: ls
     ./programs/ripgrep.nix              # 代替コマンド: grep
