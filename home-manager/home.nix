@@ -131,6 +131,7 @@ in
     ./programs/direnv.nix               # direnvのシェル統合設定
     # その他ツール
     ./programs/fzf.nix                  # 曖昧検索（ファジーファインダー）ツール
+    ./programs/gpg.nix                  # 暗号化・電子署名ツール
     ./programs/lazygit.nix              # ターミナル上で動作する高速・軽量なGitクライアント（TUI）
     ./programs/vifm.nix                 # ファイルマネージャ
     ./programs/vim/vim.nix              # Vim設定
