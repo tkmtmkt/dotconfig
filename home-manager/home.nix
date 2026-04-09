@@ -41,21 +41,27 @@ in
 
     # 代替コマンド
     bat                 # catの代替コマンド
+    bottom              # 代替コマンド: top
     dust                # duの代替コマンド
+    fd                  # 代替コマンド: find
     hexyl               # odの代替コマンド
+    htop                # 代替コマンド: top
     hyperfine           # timeの代替コマンド
     procs               # psの代替コマンド
     # 開発用ツール
     devbox              # 開発環境構築ツール
+    uv                  # Pythonパッケージ管理ツール
     # その他ツール
     bash-completion     # bash環境用のコマンド入力補完
     bc                  # 計算機
     byobu               # ターミナルマルチプレクサ
     fio                 # ディスク性能テストツール
     git                 # バージョン管理ツール
+    jq                  # JSONデータ処理ツール
     libxml2             # XMLファイルの解析、整形、検証ツール
     lnav                # ログビューア
     p7zip               # ファイルアーカイバ
+    parallel            # 並列実行コマンド
     powershell          # PowerShell
     pwgen               # ランダムなパスワードを生成するコマンド
     tig                 # ターミナル上でgit操作を行うためのCUIツール
@@ -115,66 +121,19 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.bash = {
-    enable = true;
-    bashrcExtra = builtins.readFile ./extra/bash/bashrc;
-    profileExtra = builtins.readFile ./extra/bash/profile;
-    shellAliases = import ./extra/bash/aliases.nix;
-  };
-
-  # 代替コマンド
-  programs.bottom.enable = true;        # 代替コマンド: top
-  programs.delta = import ./extra/delta.nix;# 代替コマンド: diff
-  programs.eza = import ./extra/eza.nix;    # 代替コマンド: ls
-  programs.fd.enable = true;            # 代替コマンド: find
-  programs.htop.enable = true;          # 代替コマンド: top
-  programs.ripgrep = import ./extra/ripgrep.nix;  # 代替コマンド: grep
-
-  # 開発用ツール
-  programs.direnv = {                   # direnvのシェル統合設定
-    enable = true;
-    enableBashIntegration = true;
-    nix-direnv.enable = true;
-  };
-  programs.uv.enable = true;            # Pythonパッケージ管理ツール
-
-  # その他ツール
-  programs.fzf = import ./extra/fzf.nix;    # 曖昧検索（ファジーファインダー）ツール
-  programs.jq.enable = true;            # JSONデータ処理ツール
-  programs.lazygit = import ./extra/lazygit.nix;  # ターミナル上で動作する高速・軽量なGitクライアント（TUI）
-  programs.parallel.enable = true;      # 並列実行コマンド
-  programs.vifm.enable = true;          # ファイルマネージャ
-  programs.vim = {                      # Vim設定
-    enable = true;
-    plugins = with pkgs.vimPlugins; [
-      SudoEdit-vim
-      ale
-      asyncomplete-lsp-vim
-      asyncomplete-vim
-      context_filetype-vim
-      editorconfig-vim
-      nerdtree
-      tcomment_vim
-      vim-airline
-      vim-airline-clock
-      vim-airline-themes
-      vim-colorschemes
-      vim-fugitive
-      vim-indent-guides
-      vim-lsp
-      vim-lsp-settings
-      vim-surround
-      vim-vsnip
-      vim-vsnip-integ
-      vimagit
-    ];
-    extraConfig = builtins.readFile ./extra/vimrc.vim;
-  };
-  programs.zoxide = {                   # zoxideのシェル統合設定
-    enable = true;
-    enableBashIntegration =true;
-    options = [
-      "--cmd cd"
-    ];
-  };
+  imports = [
+    ./programs/bash/bash.nix
+    # 代替コマンド
+    ./programs/delta.nix                # 代替コマンド: diff
+    ./programs/eza.nix                  # 代替コマンド: ls
+    ./programs/ripgrep.nix              # 代替コマンド: grep
+    # 開発用ツール
+    ./programs/direnv.nix               # direnvのシェル統合設定
+    # その他ツール
+    ./programs/fzf.nix                  # 曖昧検索（ファジーファインダー）ツール
+    ./programs/lazygit.nix              # ターミナル上で動作する高速・軽量なGitクライアント（TUI）
+    ./programs/vifm.nix                 # ファイルマネージャ
+    ./programs/vim/vim.nix              # Vim設定
+    ./programs/zoxide.nix               # zoxideのシェル統合設定
+  ];
 }

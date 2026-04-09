@@ -70,17 +70,14 @@ ${HOME}
 |   |   |   |-- nix-store-gc.sh*
 |   |   |   `-- setup.sh*
 |   |   |-- dotfiles/
-|   |   |-- extra/
-|   |   |   |-- bash/                   bash設定ファイル
-|   |   |   |   |-- aliases.vim
-|   |   |   |   |-- bashrc
-|   |   |   |   `-- profile
-|   |   |   `-- vimrc.vim               vim設定ファイル
+|   |   |   `-- *****           # アプリケーション設定ファイルを配置
+|   |   |-- programs/
+|   |   |   `-- *****           # アプリケーション毎の設定用Nixファイルを配置
 |   |   |-- flake.lock
 |   |   |-- flake.nix
 |   |   `-- home.nix
 |   |-- nix/
-|   |   `-- nix.conf                    Nix設定ファイル
+|   |   `-- nix.conf            # Nix設定ファイル
 |   |-- .gitignore
 |   `-- README.md
 ```
