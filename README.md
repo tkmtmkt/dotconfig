@@ -1,5 +1,15 @@
-### 操作
+# dotconfig
+{:toc}
 
+## 概要
+
+## 開発の背景
+
+## 技術スタック
+- nix
+- home-manager
+
+## セットアップ
 ```sh
 # 初期設定
 $ git clone git@github.com:tkmtmkt/dotconfig.git ~/.config
@@ -9,22 +19,26 @@ $ bin/setup.sh
 # 再設定
 $ rm -rf ~/.local/state/nix
 $ bin/setup.sh
+```
 
+## 使い方
+
+### home-manager管理
+```sh
 # Nixパッケージ更新
 $ bin/nix-flake-update.sh
+
+# home-manager設定編集
+$ home-manager edit
 
 # home-manager設定反映
 $ bin/home-manager-switch.sh
 
 # home-managerパッケージ一覧
 $ home-manager packages
-
-# home-manager設定編集
-$ home-manager edit
 ```
 
 ### Nix管理
-
 ```sh
 # Nixインストール
 sudo mkdir -p -m 0755 /nix
