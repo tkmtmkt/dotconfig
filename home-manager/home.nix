@@ -111,7 +111,7 @@ in
   #
   home.sessionVariables = {
     EDITOR = "vim";
-    HISTTIMEFORMAT = "[%F %T] ";
+    HISTTIMEFORMAT = "[%F %T %Z] ";
     RIPGREP_CONFIG_PATH = "${homeDirectory}/.config/ripgrep/ripgreprc";
   };
 
