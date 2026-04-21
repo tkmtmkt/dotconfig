@@ -61,6 +61,7 @@ in
     jq                  # JSONデータ処理ツール
     libxml2             # XMLファイルの解析、整形、検証ツール
     lnav                # ログビューア
+    nkf                 # 文字コード変換ツール
     p7zip               # ファイルアーカイバ
     parallel            # 並列実行コマンド
     powershell          # PowerShell
