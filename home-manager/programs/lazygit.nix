@@ -18,11 +18,14 @@
         useConfig = true;
       };
       gui = {
+        # Nerd Font前提の表示を有効化
+        nerdFontsVersion = "3"; # 最近のNerd Fontsはv3系
+        showIcons = true;
+        showFileTree = true;
         theme = {
           activeBorderColor = [ "cyan" "bold" ];
           inactiveBorderColor = [ "white" ];
         };
-        showIcons = true;
       };
     };
   };
