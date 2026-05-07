@@ -15,7 +15,6 @@
       vim-airline
       vim-airline-clock
       vim-airline-themes
-      vim-colorschemes
       vim-fugitive
       vim-indent-guides
       vim-lsp
@@ -24,6 +23,9 @@
       vim-vsnip
       vim-vsnip-integ
       vimagit
+      # color schemes
+      gruvbox
+      onedark-vim
     ];
   };
 }

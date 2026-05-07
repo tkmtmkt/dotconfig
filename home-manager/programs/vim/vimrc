@@ -169,13 +169,12 @@ let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 "色テーマ設定
 "gvimの色テーマは.gvimrcで指定する
 "colorscheme default
-"colorscheme hybrid
-"set background=dark
 if &diff
-  colorscheme railscasts
+  colorscheme onedark
 else
-  colorscheme molokai
+  colorscheme gruvbox
 endif
+set background=dark
 
 """"""""""""""""""""""""""""""
 "ステータスラインに文字コード等表示
