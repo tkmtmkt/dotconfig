@@ -13,6 +13,7 @@
       ltr = "ls -ltr";
       lz  = "ls -Z";
       ".." = "cd ..";
+      df = "duf -hide special";
       less = "less -R ";
       path = "echo $PATH | sed 's/:/\\n/g'";
       tree = "tree -F --dirsfirst --charset=ascii";
