@@ -14,6 +14,7 @@
       lz  = "ls -Z";
       ".." = "cd ..";
       df = "duf -hide special";
+      du = "dust";
       less = "less -R ";
       path = "echo $PATH | sed 's/:/\\n/g'";
       tree = "tree -F --dirsfirst --charset=ascii";
