@@ -2,7 +2,8 @@
 {
   programs.eza = {
     enable = true;
-    enableBashIntegration = true;
+    # lsとオプションが異なるので使用しない
+    #enableBashIntegration = true;
     extraOptions = [
       "--header"
       "--git"

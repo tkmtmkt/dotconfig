@@ -6,7 +6,8 @@
     profileExtra = builtins.readFile ./profile;
     shellAliases = {
       # ls
-      l   = "ls -CF";
+      l   = "eza";
+      ls  = "ls --color=auto";
       la  = "ls -A";
       lh  = "ls -lh";
       ll  = "ls -lF";
