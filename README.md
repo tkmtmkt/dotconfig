@@ -135,10 +135,11 @@ sudo chown ${USER}:${USER} /nix
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
 # Nixを更新する
+# nix upgrade-nix
 # ※これは使えない。以下のエラーで失敗する。成功した場合はバージョンが古いものになる。
 # error: directory "xxxx profile" is managed by 'nix profile' and currently cannot be upgraded by 'nix upgrade-nix'
-# 代替：~/.local/state/nix を削除して再インストール
-nix upgrade-nix
+rm -rf ~/.local/state/nix
+bin/setup.sh
 
 # パッケージ一覧
 nix profile list
