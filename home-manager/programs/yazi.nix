@@ -46,7 +46,7 @@
         repo = "vscode-dark-modern.yazi";
         rev = "main"; # または特定のコミットハッシュ
         #sha256 = "sha256-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=";
-        sha256 = "sha256-ErlGclqCIvb3P0nhznJJ3QbWJpiCzQJzOFxAzC+pxVw=";
+        sha256 = "sha256-/JymsCPX4f/wv9W2Xm8h5U2IpH0cQujJC7yk08wu+NE=";
       };
     };
   };
