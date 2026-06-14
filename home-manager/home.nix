@@ -53,7 +53,6 @@ in
     devbox              # 開発環境構築ツール
     uv                  # Pythonパッケージ管理ツール
     # その他ツール
-    bash-completion     # bash環境用のコマンド入力補完
     bc                  # 計算機
     byobu               # ターミナルマルチプレクサ
     fio                 # ディスク性能テストツール
