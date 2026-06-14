@@ -1,8 +1,7 @@
-# vim: set ft=sh ts=2 sw=2 et:
 # エリアス設定
-#if [[ -f ~/.bash_aliases ]] ; then
-#  . ~/.bash_aliases
-#fi
+if [[ -f ~/.bash_aliases ]] ; then
+  . ~/.bash_aliases
+fi
 
 # プロンプト設定
 case "$TERM" in
@@ -45,3 +44,5 @@ con () {
   tmux attach -t "${NAME}"\; set set-titles on \; set set-titles-string ${NAME} ||
   tmux new -s    "${NAME}"\; set set-titles on \; set set-titles-string ${NAME}
 }
+
+# vim: set ft=sh ts=2 sw=2 et:
