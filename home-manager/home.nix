@@ -111,7 +111,6 @@ in
   #  /etc/profiles/per-user/${USER}/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    RIPGREP_CONFIG_PATH = "${homeDirectory}/.config/ripgrep/ripgreprc";
   };
 
   # programs.<name>に指定するプログラムの設定については、以下のURLにある
