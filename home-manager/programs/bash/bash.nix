@@ -2,8 +2,8 @@
 {
   programs.bash = {
     enable = true;
-    bashrcExtra = builtins.readFile ./bashrc;
     profileExtra = builtins.readFile ./profile;
+    bashrcExtra = builtins.readFile ./bashrc;
     shellAliases = {
       # ls
       l   = "eza";
@@ -32,5 +32,11 @@
       tmrl = "tmux source-file ~/.tmux.conf";
       tmd  = "tmux detach ";
     };
+    initExtra = ''
+      # エリアス設定
+      if [[ -f ~/.bash_aliases ]] ; then
+        . ~/.bash_aliases
+      fi
+    '';
   };
 }
