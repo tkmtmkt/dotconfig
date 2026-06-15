@@ -111,8 +111,6 @@ in
   #  /etc/profiles/per-user/${USER}/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "vim";
-    HISTTIMEFORMAT = "[%F %T %Z] ";
     RIPGREP_CONFIG_PATH = "${homeDirectory}/.config/ripgrep/ripgreprc";
   };
 

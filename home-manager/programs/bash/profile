@@ -9,4 +9,8 @@ then
   export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 
+# 環境変数設定
+export EDITOR=vim
+export HISTTIMEFORMAT="[%F %T %Z] "
+
 # vim: set ft=sh ts=2 sw=2 et:
