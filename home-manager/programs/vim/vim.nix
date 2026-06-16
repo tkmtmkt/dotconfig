@@ -25,6 +25,7 @@
       vimagit
       # color schemes
       gruvbox
+      molokai
       onedark-vim
     ];
   };
