@@ -32,11 +32,6 @@
       tmrl = "tmux source-file ~/.tmux.conf";
       tmd  = "tmux detach ";
     };
-    initExtra = ''
-      # エリアス設定
-      if [[ -f ~/.bash_aliases ]] ; then
-        . ~/.bash_aliases
-      fi
-    '';
+    initExtra = builtins.readFile ./init;
   };
 }

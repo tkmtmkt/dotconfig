@@ -10,7 +10,5 @@ then
 fi
 
 # 環境変数設定
-export EDITOR=vim
-export HISTTIMEFORMAT="[%F %T %Z] "
 
 # vim: set ft=sh ts=2 sw=2 et:

@@ -1,0 +1,9 @@
+# エリアス設定
+if [[ -f ~/.bash_aliases ]] ; then
+  . ~/.bash_aliases
+fi
+
+EDITOR=vim
+HISTTIMEFORMAT="[%F %T %Z] "
+
+# vim: set ft=sh ts=2 sw=2 et:
