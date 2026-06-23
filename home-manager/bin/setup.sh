@@ -18,4 +18,4 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 nix --version
 
 # home-manager有効化
-nix run home-manager -- switch --impure --flake ${BASE_DIR}
+nix run home-manager -- --flake ${BASE_DIR} -b $(date +%F-%H%M) --impure switch
