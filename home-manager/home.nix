@@ -59,6 +59,9 @@ in
     mermaid-cli         # mermaid形式ファイルから画像生成
     pandoc              # 汎用ドキュメント相互変換ツール
     zensical            # 高速Webドキュメント作成ツール
+    texliveSmall        # TeX
+    # フォント
+    ipaexfont           # IPAフォント
     # その他ツール
     bc                  # 計算機
     byobu               # ターミナルマルチプレクサ
@@ -143,4 +146,7 @@ in
     ./programs/yazi.nix                 # ファイルマネージャ
     ./programs/zoxide.nix               # zoxideのシェル統合設定
   ];
+
+  # フォント設定更新
+  fonts.fontconfig.enable = true;
 }
