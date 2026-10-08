@@ -74,6 +74,7 @@ in
     parallel            # 並列実行コマンド
     powershell          # PowerShell
     pwgen               # ランダムなパスワードを生成するコマンド
+    taskwarrior3        # タスク管理ツール
     tig                 # ターミナル上でgit操作を行うためのCUIツール
     tmux                # ターミナルエミュレータ
     tree                # ディレクトリ構造表示ツール
