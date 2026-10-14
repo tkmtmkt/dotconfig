@@ -79,9 +79,10 @@ ${HOME}
 |   |-- home-manager/
 |   |   |-- bin/
 |   |   |   |-- home-manager-switch.sh*
-|   |   |   |-- make-archive.sh*
+|   |   |   |-- backup-nix.sh*
 |   |   |   |-- nix-flake-update.sh*
 |   |   |   |-- nix-store-gc.sh*
+|   |   |   |-- restore-nix.sh*
 |   |   |   `-- setup.sh*
 |   |   |-- dotfiles/
 |   |   |   `-- *****           # アプリケーション設定ファイルを配置
@@ -103,29 +104,35 @@ ${HOME}
 
 ### 実行環境のファイル構成
 ```
-${HOME}
-|-- .config/
-|   `-- nix/
-|       `-- nix.conf
-|-- .local/
-|   `-- state/
+/
+|-- nix/
+|   |-- store/
+|   `-- var/
 |       `-- nix/
-|           `-- profiles/
-|               |-- channels -> channels-1-link/
-|               |-- channels-1-link -> /nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-user-environment/
-|               |-- profile -> profile-1-link/
-|               `-- profile-1-link -> /nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-user-environment/
-|-- .nix-defexpr/
-|   |-- channels -> ${HOME}/.local/state/nix/profiles/channels/
-|   `-- channels_root -> /nix/var/nix/profiles/per-user/root/channels
-|-- .nix-profile -> ${HOME}/.local/state/nix/profiles/profile/
-|   |-- bin/
-|   |-- etc/
-|   |-- lib/
-|   |-- libexec/
-|   |-- sbin/
-|   `-- share/
-`-- .nix-channels
+|           `-- gcroots/
+`-- ${HOME}/
+    |-- .config/
+    |   `-- nix/
+    |       `-- nix.conf
+    |-- .local/
+    |   `-- state/
+    |       `-- nix/
+    |           `-- profiles/
+    |               |-- channels -> channels-1-link/
+    |               |-- channels-1-link -> /nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-user-environment/
+    |               |-- profile -> profile-1-link/
+    |               `-- profile-1-link -> /nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-user-environment/
+    |-- .nix-defexpr/
+    |   |-- channels -> ${HOME}/.local/state/nix/profiles/channels/
+    |   `-- channels_root -> /nix/var/nix/profiles/per-user/root/channels
+    |-- .nix-profile -> ${HOME}/.local/state/nix/profiles/profile/
+    |   |-- bin/
+    |   |-- etc/
+    |   |-- lib/
+    |   |-- libexec/
+    |   |-- sbin/
+    |   `-- share/
+    `-- .nix-channels
 ```
 
 ### Nix操作
