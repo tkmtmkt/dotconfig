@@ -63,21 +63,21 @@ in
     # フォント
     ipaexfont           # IPAフォント
     # その他ツール
-    bc                  # 計算機
-    byobu               # ターミナルマルチプレクサ
-    fio                 # ディスク性能テストツール
+    bc                  # 任意精度計算ツール
+    byobu               # ターミナル多重化ツール
+    fio                 # ディスク性能測定ツール
     jq                  # JSONデータ処理ツール
-    libxml2             # XMLファイルの解析、整形、検証ツール
-    lnav                # ログビューア
+    libxml2             # XML解析・整形・検証ツール
+    lnav                # ログ閲覧・分析ツール
     nkf                 # 文字コード変換ツール
-    p7zip               # ファイルアーカイバ
-    parallel            # 並列実行コマンド
-    powershell          # PowerShell
-    pwgen               # ランダムなパスワードを生成するコマンド
+    p7zip               # ファイル圧縮・解凍ツール
+    parallel            # 並列処理ツール
+    powershell          # PowerShell環境
+    pwgen               # パスワード生成ツール
     sqlite              # SQLiteデータベース操作ツール
     taskwarrior3        # タスク管理ツール
-    tig                 # ターミナル上でgit操作を行うためのCUIツール
-    tmux                # ターミナルエミュレータ
+    tig                 # Gitリポジトリ操作ツール
+    tmux                # ターミナル多重化ツール
     tree                # ディレクトリ構造表示ツール
   ];
 
