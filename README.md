@@ -34,20 +34,19 @@
 
 ```sh
 git clone git@github.com:tkmtmkt/dotconfig.git ~/.config
-cd ~/.config/home-manager
 ```
 
 NixをインストールしてHome Managerを適用します：
 
 ```sh
-home-manager/bin/setup.sh
+~/.config/home-manager/bin/setup.sh
 ```
 
 セットアップをやり直す場合：
 
 ```sh
 rm -rf ~/.local/state/nix
-home-manager/bin/setup.sh
+~/.config/home-manager/bin/setup.sh
 ```
 
 ## 使い方
@@ -60,14 +59,14 @@ home-manager/bin/setup.sh
 変更後は以下を実行して反映します：
 
 ```bash
-home-manager/bin/home-manager-switch.sh
+~/.config/home-manager/bin/home-manager-switch.sh
 ```
 
 ### アップデート
 
 ```sh
 # Nixパッケージ更新
-home-manager/bin/nix-flake-update.sh
+~/.config/home-manager/bin/nix-flake-update.sh
 ```
 
 ## 補足
@@ -122,17 +121,17 @@ ${HOME}
     |               |-- channels-1-link -> /nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-user-environment/
     |               |-- profile -> profile-1-link/
     |               `-- profile-1-link -> /nix/store/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-user-environment/
-    |-- .nix-defexpr/
-    |   |-- channels -> ${HOME}/.local/state/nix/profiles/channels/
-    |   `-- channels_root -> /nix/var/nix/profiles/per-user/root/channels
+    |-- .nix-defexpr/           # 使用しない(Flakes以前の方式で使用していたもの)
     |-- .nix-profile -> ${HOME}/.local/state/nix/profiles/profile/
-    |   |-- bin/
+    |   |-- bin/                # 追加したパッケージの実行ファイルへのシンボリックリンクが格納される
     |   |-- etc/
+    |   |   `-- profile.d/
+    |   |       `-- nix.sh      # Nix環境設定ファイル
     |   |-- lib/
     |   |-- libexec/
     |   |-- sbin/
     |   `-- share/
-    `-- .nix-channels
+    `-- .nix-channels           # 使用しない(Flakes以前の方式で使用していたもの)
 ```
 
 ### Nix操作
@@ -143,16 +142,12 @@ sudo chown ${USER}:${USER} /nix
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 
 # Nixを更新する
-# nix upgrade-nix
-# ※これは使えない。以下のエラーで失敗する。成功した場合はバージョンが古いものになる。
-# error: directory "xxxx profile" is managed by 'nix profile' and currently cannot be upgraded by 'nix upgrade-nix'
-rm -rf ~/.local/state/nix
-home-manager/bin/setup.sh
+nix profile upgrade nix
 
 # パッケージ一覧
 nix profile list
 
-# パッケージ名を検索する
+# パッケージを検索する
 nix search nixpkgs#パッケージ名 ^
 
 # パッケージを追加する
@@ -173,6 +168,16 @@ nix-collect-garbage --delete-old
 # GC root(GCの起点となるオブジェクトやパス)の一覧
 nix-store --gc --print-roots
 ```
+
+### home-manager の仕組み
+
+インストールコマンドである `nix run home-manager switch` を実行すると、
+内部では以下の処理を行います。
+
+- flake.nix + home.nix から home-manager-path(ツール・コマンドの集まり)、
+  home-manager-files(設定ファイルの集まり)を作成します。
+- home-manager-path, home-manager-files から home-manager-generation(環境全体の完成形) を作成します。
+- home-manager-generation/activate を実行して環境を適用します。
 
 ## 参考
 - [Nix Home Manager のつまづき石をまとめる ||| Apribase](https://apribase.net/2023/08/22/nix-home-manager-qa/)
