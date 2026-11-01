@@ -79,6 +79,8 @@ in
     tig                 # Gitリポジトリ操作ツール
     tmux                # ターミナル多重化ツール
     tree                # ディレクトリ構造表示ツール
+    # ライブラリ
+    glibcLocales        # ロケールパッケージ(ja_JP.UTF-8等を提供)
   ];
 
   # Home Managerはドットファイルの管理に非常に優れています。
@@ -121,6 +123,7 @@ in
   #  /etc/profiles/per-user/${USER}/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
+    LOCALE_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
   };
 
   # programs.<name>に指定するプログラムの設定については、以下のURLにある
