@@ -8,15 +8,12 @@ set -o pipefail
 #set -o xtrace
 
 TAR_FILE="dotconfig-$(date +%F-%H%M%S).tar.gz"
-tar -zcf "$TAR_FILE" -C ~ \
+tar -zcf "$TAR_FILE" -C "$HOME" \
   .config/home-manager/ \
   .config/nix/ \
   .config/.git/ \
   .config/.gitignore \
   .config/README.md \
-  .local/state/home-manager/ \
-  .local/state/nix/ \
-  .nix-profile \
   /nix/
 
 # vim: set ft=sh ts=2 sw=2 et:
