@@ -3,6 +3,14 @@ if [[ -f ~/.bash_aliases ]] ; then
   . ~/.bash_aliases
 fi
 
+# ローカル設定
+if [[ -d ~/.config/profile.d ]] ; then
+  for file in ~/.config/profile.d/*
+  do
+    [[ -f "$file" ]] && . "$file"
+  done
+fi
+
 EDITOR=vim
 HISTTIMEFORMAT="[%F %T %Z] "
 

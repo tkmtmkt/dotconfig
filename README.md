@@ -49,6 +49,12 @@ rm -rf ~/.local/state/nix
 ~/.config/home-manager/bin/setup.sh
 ```
 
+Nixで管理しないbash設定フィアルを以下の場所に配置する。
+
+```sh
+.config/profile.d/xxx
+```
+
 ## 使い方
 
 ### カスタマイズ
