@@ -12,6 +12,9 @@ in
   home.username = "${username}";
   home.homeDirectory = "${homeDirectory}";
 
+  # 既存ファイルが競合した際に付与するバックアップの拡張子
+  home.backupFileExtension = "backup"; # 例: .bashrc なら .bashrc.backup に退避される
+
   # この値は、お使いの構成が互換性を持つ Home Manager のリリースバージョンを
   # 決定します。これにより、新しい Home Manager リリースで後方互換性のない
   # 変更が導入された場合でも、互換性の問題が発生するのを防ぐことができます。
