@@ -10,3 +10,5 @@ set -o pipefail
 
 nix store gc
 #nix-collect-garbage --delete-old
+
+# vim: set ft=sh ts=2 sw=2 et:
