@@ -9,6 +9,7 @@ set -o pipefail
 
 TAR_FILE="dotconfig-$(date +%F-%H%M%S).tar.gz"
 tar -zcf "$TAR_FILE" -C "$HOME" \
+  --exclude="nix/var/nix/gc-socket" \
   .config/home-manager/ \
   .config/nix/ \
   .config/.git/ \
